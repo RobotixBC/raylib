@@ -243,7 +243,7 @@ After **10 months of intense development**, new raylib version is ready. Despite
 
  - `raudio` module has been internally reviewed to accomodate the new `Music` structure (converted from previous pointer format) and the module has been adapted to the **highly improved** [`miniaudio v0.10`](https://github.com/dr-soft/miniaudio).
 
- - `text` module reviewed to **improve fonts generation** and text management functions, `Font` structure has been redesigned to better accomodate characters data, decoupling individual characters as `Image` glyphs from the font atlas parameters. Several improvements have been made to better support Unicode strings with UTF-8 encoding.
+ - `text` module reviewed to **improve fonts generation** and text management functions, `RayFont` structure has been redesigned to better accomodate characters data, decoupling individual characters as `Image` glyphs from the font atlas parameters. Several improvements have been made to better support Unicode strings with UTF-8 encoding.
 
  - **Multiple new examples added** (most of them contributed by raylib users) and all examples reviewed for correct execution on most of the supported platforms, specially Web and Raspberry Pi. A detailed categorized table has been created on github for easy examples navigation and code access.
 

@@ -430,7 +430,7 @@ Detailed changes:
 [text] ADDED: DrawTextPro() with text rotation support, WARNING: DrawTextPro() requires including `rlgl.h`, before it was only dependant on `textures` module.
 [text] ADDED: UnloadCodepoints() to safely free loaded codepoints
 [text] REMOVED: DrawTextRec() and DrawTextRecEx(), moved to example, those functions could be very specific depending on user needs so it's better to give the user the full source in case of special requirements instead of allowing a function with +10 input parameters.
-[text] RENAMED: struct `CharInfo` to `GlyphInfo`, actually that's the correct naming for the data contained. It contains the character glyph metrics and the glyph image; in the past it also contained rectangle within the font atlas but that data has been moved to `Font` struct directly, so, `GlyphInfo` is a more correct name.
+[text] RENAMED: struct `CharInfo` to `GlyphInfo`, actually that's the correct naming for the data contained. It contains the character glyph metrics and the glyph image; in the past it also contained rectangle within the font atlas but that data has been moved to `RayFont` struct directly, so, `GlyphInfo` is a more correct name.
 [text] RENAMED: `CodepointToUtf8()` to `CodepointToUTF8()`, capitalization of UTF-8 is the correct form, it would also require de hyphen but it can be omitted in this case.
 [text] RENAMED: `TextToUtf8()` to `TextCodepointsToUTF8` for consistency and more detail on the functionality.
 [text] RENAMED: GetCodepoints() to LoadCodepoints(), now codepoint array data is loaded dynamically instead of reusing a limited static buffer.
@@ -666,7 +666,7 @@ Detailed changes:
 [text] ADDED: LoadFontFromMemory() (TTF only) (#1327)
 [text] ADDED: UnloadFontData()
 [text] RENAMED: FormatText() -> TextFormat()
-[text] REVIEWED: Font struct, added charsPadding (#1432)
+[text] REVIEWED: RayFont struct, added charsPadding (#1432)
 [text] REVIEWED: TextJoin()
 [text] REVIEWED: TextReplace() (#1172)
 [text] REVIEWED: LoadBMFont() to load data from memory (#1232)
@@ -901,7 +901,7 @@ Detailed changes:
 [text] REVIEWED: TextToInteger()
 [text] REVIEWED: GetNextCodepoint(), renamed parameters for clarity
 [text] REVIEWED: GenImageFontAtlas(), improved atlas size computing
-[text] REDESIGNED: struct Font, character rectangles have been moved out from CharInfo to Font
+[text] REDESIGNED: struct RayFont, character rectangles have been moved out from CharInfo to RayFont
 [text] REDESIGNED: struct CharInfo, now includes directly an Image of the glyph
 [text] REDESIGNED: GenImageFontAtlas(), additional recs parameter added
 [text] REDESIGNED: ImageTextEx(), to avoid font retrieval from GPU
@@ -1140,7 +1140,7 @@ Detailed changes:
 [core] RENAMED: Begin2dMode() to BeginMode2D()
 [core] RENAMED: End2dMode() to EndMode2D()
 [core] RENAMED: struct Camera to Camera3D
-[core] RENAMED: struct SpriteFont to Font -> plus all required functions!
+[core] RENAMED: struct SpriteFont to RayFont -> plus all required functions!
 [core] RENAMED: enum TextureFormat to PixelFormat
 [core] REVIEWED: Rectangle params int to float
 [core] REVIEWED: timing system for macOS
@@ -1807,7 +1807,7 @@ Release:     raylib 1.0.4 (23 January 2014)
 Release:     raylib 1.0.3 (19 December 2013)
 -----------------------------------------------
 [fonts] Added 8 rBMF free fonts to be used on projects!
-[text] LoadSpriteFont() - Now supports rBMF file loading (raylib Bitmap Font)
+[text] LoadSpriteFont() - Now supports rBMF file loading (raylib Bitmap RayFont)
 [examples] ex05a_sprite_fonts completed
 [examples] ex05b_rbmf_fonts completed
 [core] InitWindowEx() - InitWindow with extended parameters, resizing option and custom cursor!

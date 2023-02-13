@@ -672,8 +672,8 @@ return {
       }
     },
     {
-      name = "Font",
-      description = "Font, font texture and GlyphInfo array data",
+      name = "RayFont",
+      description = "RayFont, font texture and GlyphInfo array data",
       fields = {
         {
           type = "int",
@@ -2738,7 +2738,7 @@ return {
     },
     {
       name = "FontType",
-      description = "Font type, defines generation method",
+      description = "RayFont type, defines generation method",
       values = {
         {
           name = "FONT_DEFAULT",
@@ -5092,7 +5092,7 @@ return {
       description = "Create an image from text (custom sprite font)",
       returnType = "Image",
       params = {
-        {type = "Font", name = "font"},
+        {type = "RayFont", name = "font"},
         {type = "const char *", name = "text"},
         {type = "float", name = "fontSize"},
         {type = "float", name = "spacing"},
@@ -5529,7 +5529,7 @@ return {
       returnType = "void",
       params = {
         {type = "Image *", name = "dst"},
-        {type = "Font", name = "font"},
+        {type = "RayFont", name = "font"},
         {type = "const char *", name = "text"},
         {type = "Vector2", name = "position"},
         {type = "float", name = "fontSize"},
@@ -5850,13 +5850,13 @@ return {
     },
     {
       name = "GetFontDefault",
-      description = "Get the default Font",
-      returnType = "Font"
+      description = "Get the default RayFont",
+      returnType = "RayFont"
     },
     {
       name = "LoadFont",
       description = "Load font from file into GPU memory (VRAM)",
-      returnType = "Font",
+      returnType = "RayFont",
       params = {
         {type = "const char *", name = "fileName"}
       }
@@ -5864,7 +5864,7 @@ return {
     {
       name = "LoadFontEx",
       description = "Load font from file with extended parameters, use NULL for fontChars and 0 for glyphCount to load the default character set",
-      returnType = "Font",
+      returnType = "RayFont",
       params = {
         {type = "const char *", name = "fileName"},
         {type = "int", name = "fontSize"},
@@ -5875,7 +5875,7 @@ return {
     {
       name = "LoadFontFromImage",
       description = "Load font from Image (XNA style)",
-      returnType = "Font",
+      returnType = "RayFont",
       params = {
         {type = "Image", name = "image"},
         {type = "Color", name = "key"},
@@ -5885,7 +5885,7 @@ return {
     {
       name = "LoadFontFromMemory",
       description = "Load font from memory buffer, fileType refers to extension: i.e. '.ttf'",
-      returnType = "Font",
+      returnType = "RayFont",
       params = {
         {type = "const char *", name = "fileType"},
         {type = "const unsigned char *", name = "fileData"},
@@ -5935,7 +5935,7 @@ return {
       description = "Unload font from GPU memory (VRAM)",
       returnType = "void",
       params = {
-        {type = "Font", name = "font"}
+        {type = "RayFont", name = "font"}
       }
     },
     {
@@ -5943,7 +5943,7 @@ return {
       description = "Export font as code file, returns true on success",
       returnType = "bool",
       params = {
-        {type = "Font", name = "font"},
+        {type = "RayFont", name = "font"},
         {type = "const char *", name = "fileName"}
       }
     },
@@ -5973,7 +5973,7 @@ return {
       description = "Draw text using font and additional parameters",
       returnType = "void",
       params = {
-        {type = "Font", name = "font"},
+        {type = "RayFont", name = "font"},
         {type = "const char *", name = "text"},
         {type = "Vector2", name = "position"},
         {type = "float", name = "fontSize"},
@@ -5983,10 +5983,10 @@ return {
     },
     {
       name = "DrawTextPro",
-      description = "Draw text using Font and pro parameters (rotation)",
+      description = "Draw text using RayFont and pro parameters (rotation)",
       returnType = "void",
       params = {
-        {type = "Font", name = "font"},
+        {type = "RayFont", name = "font"},
         {type = "const char *", name = "text"},
         {type = "Vector2", name = "position"},
         {type = "Vector2", name = "origin"},
@@ -6001,7 +6001,7 @@ return {
       description = "Draw one character (codepoint)",
       returnType = "void",
       params = {
-        {type = "Font", name = "font"},
+        {type = "RayFont", name = "font"},
         {type = "int", name = "codepoint"},
         {type = "Vector2", name = "position"},
         {type = "float", name = "fontSize"},
@@ -6013,7 +6013,7 @@ return {
       description = "Draw multiple character (codepoint)",
       returnType = "void",
       params = {
-        {type = "Font", name = "font"},
+        {type = "RayFont", name = "font"},
         {type = "const int *", name = "codepoints"},
         {type = "int", name = "count"},
         {type = "Vector2", name = "position"},
@@ -6033,10 +6033,10 @@ return {
     },
     {
       name = "MeasureTextEx",
-      description = "Measure string size for Font",
+      description = "Measure string size for RayFont",
       returnType = "Vector2",
       params = {
-        {type = "Font", name = "font"},
+        {type = "RayFont", name = "font"},
         {type = "const char *", name = "text"},
         {type = "float", name = "fontSize"},
         {type = "float", name = "spacing"}
@@ -6047,7 +6047,7 @@ return {
       description = "Get glyph index position in font for a codepoint (unicode character), fallback to '?' if not found",
       returnType = "int",
       params = {
-        {type = "Font", name = "font"},
+        {type = "RayFont", name = "font"},
         {type = "int", name = "codepoint"}
       }
     },
@@ -6056,7 +6056,7 @@ return {
       description = "Get glyph font info data for a codepoint (unicode character), fallback to '?' if not found",
       returnType = "GlyphInfo",
       params = {
-        {type = "Font", name = "font"},
+        {type = "RayFont", name = "font"},
         {type = "int", name = "codepoint"}
       }
     },
@@ -6065,7 +6065,7 @@ return {
       description = "Get glyph rectangle in font atlas for a codepoint (unicode character), fallback to '?' if not found",
       returnType = "Rectangle",
       params = {
-        {type = "Font", name = "font"},
+        {type = "RayFont", name = "font"},
         {type = "int", name = "codepoint"}
       }
     },

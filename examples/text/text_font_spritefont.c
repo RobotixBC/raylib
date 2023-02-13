@@ -40,9 +40,9 @@ int main(void)
     const char msg3[50] = "...and a THIRD one! GREAT! :D";
 
     // NOTE: Textures/Fonts MUST be loaded after Window initialization (OpenGL context is required)
-    Font font1 = LoadFont("resources/custom_mecha.png");          // Font loading
-    Font font2 = LoadFont("resources/custom_alagard.png");        // Font loading
-    Font font3 = LoadFont("resources/custom_jupiter_crash.png");  // Font loading
+    RayFont font1 = LoadFont("resources/custom_mecha.png");          // RayFont loading
+    RayFont font2 = LoadFont("resources/custom_alagard.png");        // RayFont loading
+    RayFont font3 = LoadFont("resources/custom_jupiter_crash.png");  // RayFont loading
 
     Vector2 fontPosition1 = { screenWidth/2.0f - MeasureTextEx(font1, msg1, (float)font1.baseSize, -3).x/2,
                               screenHeight/2.0f - font1.baseSize/2.0f - 80.0f };
@@ -80,9 +80,9 @@ int main(void)
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
-    UnloadFont(font1);      // Font unloading
-    UnloadFont(font2);      // Font unloading
-    UnloadFont(font3);      // Font unloading
+    UnloadFont(font1);      // RayFont unloading
+    UnloadFont(font2);      // RayFont unloading
+    UnloadFont(font3);      // RayFont unloading
 
     CloseWindow();          // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
