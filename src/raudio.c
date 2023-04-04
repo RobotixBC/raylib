@@ -324,6 +324,7 @@ typedef enum {
 struct rAudioBuffer {
     ma_data_converter converter;    // Audio data converter
 
+    void* audioCallbackExtra;
     AudioCallback callback;         // Audio buffer callback for buffer filling on audio threads
     rAudioProcessor *processor;     // Audio processor
 
@@ -2221,9 +2222,12 @@ void SetAudioStreamBufferSizeDefault(int size)
 }
 
 // Audio thread callback to request new data
-void SetAudioStreamCallback(AudioStream stream, AudioCallback callback)
+void SetAudioStreamCallback(AudioStream stream, AudioCallback callback, void* extra)
 {
-    if (stream.buffer != NULL) stream.buffer->callback = callback;
+    if (stream.buffer != NULL){ 
+        stream.buffer->callback = callback;
+        stream.buffer->audioCallbackExtra = extra;
+    }
 }
 
 // Add processor to audio stream. Contrary to buffers, the order of processors is important.
@@ -2294,7 +2298,7 @@ static ma_uint32 ReadAudioBufferFramesInInternalFormat(AudioBuffer *audioBuffer,
     // Using audio buffer callback
     if (audioBuffer->callback)
     {
-        audioBuffer->callback(framesOut, frameCount);
+        audioBuffer->callback(framesOut, frameCount, audioBuffer->audioCallbackExtra);
         audioBuffer->framesProcessed += frameCount;
 
         return frameCount;
@@ -2478,7 +2482,7 @@ static void OnSendAudioDataToDevice(ma_device *pDevice, void *pFramesOut, const 
                         rAudioProcessor *processor = audioBuffer->processor;
                         while (processor)
                         {
-                            processor->process(framesIn, framesJustRead);
+                            processor->process(framesIn, framesJustRead, audioBuffer->audioCallbackExtra);
                             processor = processor->next;
                         }
 
